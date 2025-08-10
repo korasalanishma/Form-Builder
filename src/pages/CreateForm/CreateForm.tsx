@@ -40,7 +40,7 @@ export default function CreateForm() {
   const [fields, setFields] = useState<any[]>([]);
   const [showConfirm, setShowConfirm] = useState(false);
 
-  // Auto-update preview original 
+  
   useEffect(() => {
     dispatch(setSelectedForm({ formName, createdAt: new Date().toISOString(), fields }));
   }, [fields, formName, dispatch]);
@@ -140,7 +140,7 @@ export default function CreateForm() {
         minHeight: '100vh'
       }}
     >
-      {/* Enhanced Top Bar */}
+      
       <Paper 
         elevation={3}
         sx={{
@@ -199,7 +199,7 @@ export default function CreateForm() {
       </Paper>
 
       <Box flex={1} display="flex">
-        {/* Enhanced Left Sidebar */}
+        {/*left navbar*/}
         <Paper
           elevation={4}
           sx={{
@@ -253,7 +253,7 @@ export default function CreateForm() {
           </Box>
         </Paper>
 
-        {/* Enhanced Middle - Form Builder */}
+        {/*  Middle - Form Builder */}
         <Box 
           flex={1} 
           p={4} 
@@ -317,7 +317,7 @@ export default function CreateForm() {
                 }}
               >
                 <CardContent sx={{ p: 3 }}>
-                  {/* Field Header */}
+                  
                   <Box display="flex" justifyContent="space-between" alignItems="center" mb={3}>
                     <Box display="flex" alignItems="center" gap={2}>
                       <DragIndicator sx={{ color: '#bbb', cursor: 'grab' }} />
@@ -347,7 +347,7 @@ export default function CreateForm() {
                     </Tooltip>
                   </Box>
 
-                  {/* Field Configuration */}
+                  
                   <Box display="grid" gridTemplateColumns="1fr 1fr" gap={2} mb={2}>
                     <TextField 
                       label="Field Label" 
@@ -378,7 +378,7 @@ export default function CreateForm() {
                     />
                   </Box>
 
-                  {/* Default Value */}
+                  
                   {field.type !== "checkbox" && (
                     <TextField 
                       label="Default Value" 
@@ -389,7 +389,7 @@ export default function CreateForm() {
                     />
                   )}
 
-                  {/* Validation Rules */}
+                  {/*validations*/}
                   {(field.type === "text" || field.type === "textarea") && (
                     <Box>
                       <Divider sx={{ my: 2 }}>
@@ -432,7 +432,7 @@ export default function CreateForm() {
                     </Box>
                   )}
 
-                  {/* Number Field Min/Max Digits */}
+                  
                   {field.type === "number" && (
                     <Box>
                       <Divider sx={{ my: 2 }}>
@@ -455,7 +455,6 @@ export default function CreateForm() {
                     </Box>
                   )}
 
-                  {/* Options for Select/Radio/Checkbox */}
                   {(field.type === "select" || field.type === "radio" || field.type === "checkbox") && (
                     <Box>
                       <Divider sx={{ my: 2 }}>
@@ -488,7 +487,6 @@ export default function CreateForm() {
                     </Box>
                   )}
 
-                  {/* Date Field Default */}
                   {field.type === "date" && (
                     <TextField 
                       type="date" 
@@ -501,7 +499,6 @@ export default function CreateForm() {
                     />
                   )}
 
-                  {/* Derived Field Controls */}
                   {field.derived && (
                     <Box>
                       <Divider sx={{ my: 2 }}>
@@ -562,7 +559,7 @@ export default function CreateForm() {
           )}
         </Box>
 
-        {/* Enhanced Right - Live Preview with Save Button */}
+        {/*  Live Preview */}
         <Paper
           elevation={4}
           sx={{
@@ -596,7 +593,6 @@ export default function CreateForm() {
             <PreviewForm isBuilderMode={true} />
           </Box>
 
-          {/* Save Button Fixed at Bottom */}
           {fields.length > 0 && formName.trim() && (
             <Box 
               sx={{ 
@@ -641,8 +637,6 @@ export default function CreateForm() {
           )}
         </Paper>
       </Box>
-
-      {/* Enhanced Confirm Dialog */}
       <Dialog 
         open={showConfirm} 
         onClose={() => setShowConfirm(false)}

@@ -29,7 +29,7 @@ export default function PreviewForm({ isBuilderMode = false }: PreviewFormProps)
   const [values, setValues] = useState<Record<number, any>>({});
   const [errors, setErrors] = useState<Record<number, string>>({});
 
-  // Set default values when form loads
+  
   useEffect(() => {
     if (selectedForm) {
       const defaults: Record<number, any> = {};
@@ -40,7 +40,7 @@ export default function PreviewForm({ isBuilderMode = false }: PreviewFormProps)
     }
   }, [selectedForm]);
 
-  // Derived fields auto-update
+  
   useEffect(() => {
     if (!selectedForm) return;
     let updatedValues = { ...values };
@@ -124,7 +124,7 @@ export default function PreviewForm({ isBuilderMode = false }: PreviewFormProps)
       }
     }
     if (field.type === "number" && value) {
-      // Count digits in the number (removing any non-digit characters)
+      
       const digitString = value.toString().replace(/[^0-9]/g, '');
       const digitCount = digitString.length;
       
@@ -148,7 +148,7 @@ export default function PreviewForm({ isBuilderMode = false }: PreviewFormProps)
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Validate all fields
+   
     const newErrors: Record<number, string> = {};
     let hasErrors = false;
 
@@ -167,7 +167,7 @@ export default function PreviewForm({ isBuilderMode = false }: PreviewFormProps)
         alert("Form validation passed! (This is preview mode - data not saved)");
       } else {
         alert("Form submitted successfully!");
-        // In real app, you would submit data here
+        
       }
     } else {
       alert("Please fix the validation errors before submitting.");
@@ -183,7 +183,7 @@ export default function PreviewForm({ isBuilderMode = false }: PreviewFormProps)
         background: 'white'
       }}
     >
-      {/* Form Header */}
+      {/* Header */}
       <Box 
         sx={{ 
           p: 3, 
@@ -199,11 +199,10 @@ export default function PreviewForm({ isBuilderMode = false }: PreviewFormProps)
         </Typography>
       </Box>
 
-      {/* Form Content */}
       <Box component="form" onSubmit={handleSubmit} sx={{ p: 3 }}>
         {selectedForm.fields?.map((field: any) => (
           <Box key={field.id} sx={{ mb: 3 }}>
-            {/* Text Field */}
+            {/* Text */}
             {field.type === "text" && (
               <TextField
                 fullWidth
@@ -223,7 +222,7 @@ export default function PreviewForm({ isBuilderMode = false }: PreviewFormProps)
               />
             )}
 
-            {/* Number Field */}
+            {/* Number */}
             {field.type === "number" && (
               <TextField
                 fullWidth
@@ -247,7 +246,7 @@ export default function PreviewForm({ isBuilderMode = false }: PreviewFormProps)
               />
             )}
 
-            {/* Textarea Field */}
+            {/* Textarea */}
             {field.type === "textarea" && (
               <TextField
                 fullWidth
@@ -268,7 +267,7 @@ export default function PreviewForm({ isBuilderMode = false }: PreviewFormProps)
               />
             )}
 
-            {/* Select Field */}
+            {/* Select  */}
             {field.type === "select" && (
               <TextField
                 select
@@ -297,7 +296,7 @@ export default function PreviewForm({ isBuilderMode = false }: PreviewFormProps)
               </TextField>
             )}
 
-            {/* Radio Field */}
+            {/* Radio  */}
             {field.type === "radio" && (
               <Box>
                 <Typography 
@@ -328,7 +327,7 @@ export default function PreviewForm({ isBuilderMode = false }: PreviewFormProps)
               </Box>
             )}
 
-            {/* Checkbox Field */}
+            {/* Checkbox */}
             {field.type === "checkbox" && field.options ? (
               <Box>
                 <Typography 
@@ -385,7 +384,7 @@ export default function PreviewForm({ isBuilderMode = false }: PreviewFormProps)
               </Box>
             )}
 
-            {/* Date Field */}
+            {/*data*/}
             {field.type === "date" && (
               <TextField
                 fullWidth
@@ -410,7 +409,7 @@ export default function PreviewForm({ isBuilderMode = false }: PreviewFormProps)
 
       
 
-        {/* Builder Mode Message */}
+        
         {isBuilderMode && selectedForm.fields?.length > 0 && (
           <Box sx={{ textAlign: 'center', mt: 4 }}>
             <Typography variant="body2" color="text.secondary" sx={{ 

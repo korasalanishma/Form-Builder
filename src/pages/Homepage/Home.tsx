@@ -11,11 +11,11 @@ return (
       variant="h1" 
       className="home-title"
       sx={{
-        fontSize: "2.5rem", // Big heading size
+        fontSize: "2.5rem", 
         fontWeight: "bold",
         
-        marginBottom: "2.5rem", // pushes buttons down
-        marginTop: "2rem",    // spacing from top
+        marginBottom: "2.5rem", 
+        marginTop: "2rem",    
         color: "#34479cff",
         textAlign: "center"
       }}
